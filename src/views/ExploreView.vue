@@ -8,14 +8,14 @@ const activeGenre = ref('All')
 const genres = ['All', 'Action', 'Sci-Fi', 'Drama', 'Thriller']
 
 const allMovies = ref([
-  { id: 101, title: 'Dune: Part Two', genre: 'Sci-Fi', image: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2JGjjc9CW.jpg', year: '2024', rating: '8.8' },
-  { id: 102, title: 'Oppenheimer', genre: 'Drama', image: 'https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg', year: '2023', rating: '8.6' },
-  { id: 201, title: 'John Wick: Chapter 4', genre: 'Action', image: 'https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg', year: '2023', rating: '7.8' },
-  { id: 106, title: 'Interstellar', genre: 'Sci-Fi', image: 'https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg', year: '2014', rating: '8.6' },
-  { id: 105, title: 'The Batman', genre: 'Action', image: 'https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg', year: '2022', rating: '7.7' },
-  { id: 301, title: 'Seven', genre: 'Thriller', image: 'https://image.tmdb.org/t/p/w500/6yoghtyTpznpBik8EngEmJskVPh.jpg', year: '1995', rating: '8.6' },
-  { id: 103, title: 'Poor Things', genre: 'Drama', image: 'https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg', year: '2023', rating: '8.2' },
-  { id: 302, title: 'Prisoners', genre: 'Thriller', image: 'https://image.tmdb.org/t/p/w500/tuOm1CU0g6vA19TjQc9AEX6y0wZ.jpg', year: '2013', rating: '8.1' }
+  { id: 101, title: 'Dune: Part Two', genre: 'Sci-Fi', image: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=500&q=80', year: '2024', rating: '8.8' },
+  { id: 102, title: 'Oppenheimer', genre: 'Drama', image: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=500&q=80', year: '2023', rating: '8.6' },
+  { id: 201, title: 'John Wick: Chapter 4', genre: 'Action', image: 'https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=500&q=80', year: '2023', rating: '7.8' },
+  { id: 106, title: 'Interstellar', genre: 'Sci-Fi', image: 'https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=500&q=80', year: '2014', rating: '8.6' },
+  { id: 105, title: 'The Batman', genre: 'Action', image: 'https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=500&q=80', year: '2022', rating: '7.7' },
+  { id: 301, title: 'Seven', genre: 'Thriller', image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&q=80', year: '1995', rating: '8.6' },
+  { id: 103, title: 'Poor Things', genre: 'Drama', image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=500&q=80', year: '2023', rating: '8.2' },
+  { id: 302, title: 'Prisoners', genre: 'Thriller', image: 'https://images.unsplash.com/photo-1505686994434-e3fbc4459385?w=500&q=80', year: '2013', rating: '8.1' }
 ])
 
 const filteredMovies = computed(() => {

@@ -1,35 +1,19 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { useContactForm } from '../composables/useContactForm.js'
 
-const form = reactive({
-  name: '',
-  email: '',
-  subject: '',
-  message: ''
-})
-
-const isSubmitting = ref(false)
-const submitStatus = ref(null)
-const focusedField = ref(null)
-
-const submitForm = async () => {
-  isSubmitting.value = true
-  submitStatus.value = null
-
-  setTimeout(() => {
-    isSubmitting.value = false
-    submitStatus.value = 'success'
-    
-    form.name = ''
-    form.email = ''
-    form.subject = ''
-    form.message = ''
-    
-    setTimeout(() => {
-      submitStatus.value = null
-    }, 5000)
-  }, 1500)
-}
+const {
+  form,
+  errors,
+  touched,
+  focusedField,
+  isSubmitting,
+  isFormValid,
+  submitStatus,
+  serverError,
+  onFocus,
+  onBlur,
+  submitForm
+} = useContactForm()
 </script>
 
 <template>
@@ -72,62 +56,72 @@ const submitForm = async () => {
 
           <form @submit.prevent="submitForm" class="contact-form">
             <div class="input-row">
-              <div class="form-group" :class="{ 'is-focused': focusedField === 'name' || form.name }">
+              <div class="form-group" :class="{ 'is-focused': focusedField === 'name' || form.name, 'has-error': errors.name }">
                 <label for="name">Full Name</label>
                 <input 
                   type="text" 
                   id="name" 
                   v-model="form.name" 
-                  @focus="focusedField = 'name'" 
-                  @blur="focusedField = null"
-                  required 
+                  @focus="onFocus('name')" 
+                  @blur="onBlur('name')"
+                  autocomplete="name"
                 />
                 <span class="focus-border"></span>
+                <transition name="err-fade">
+                  <p v-if="errors.name" class="field-error">{{ errors.name }}</p>
+                </transition>
               </div>
 
-              <div class="form-group" :class="{ 'is-focused': focusedField === 'email' || form.email }">
+              <div class="form-group" :class="{ 'is-focused': focusedField === 'email' || form.email, 'has-error': errors.email }">
                 <label for="email">Email Address</label>
                 <input 
                   type="email" 
                   id="email" 
                   v-model="form.email" 
-                  @focus="focusedField = 'email'" 
-                  @blur="focusedField = null"
-                  required 
+                  @focus="onFocus('email')" 
+                  @blur="onBlur('email')"
+                  autocomplete="email"
                 />
                 <span class="focus-border"></span>
+                <transition name="err-fade">
+                  <p v-if="errors.email" class="field-error">{{ errors.email }}</p>
+                </transition>
               </div>
             </div>
 
-            <div class="form-group" :class="{ 'is-focused': focusedField === 'subject' || form.subject }">
+            <div class="form-group" :class="{ 'is-focused': focusedField === 'subject' || form.subject, 'has-error': errors.subject }">
               <label for="subject">Subject</label>
               <input 
                 type="text" 
                 id="subject" 
                 v-model="form.subject" 
-                @focus="focusedField = 'subject'" 
-                @blur="focusedField = null"
-                required 
+                @focus="onFocus('subject')" 
+                @blur="onBlur('subject')"
               />
               <span class="focus-border"></span>
+              <transition name="err-fade">
+                <p v-if="errors.subject" class="field-error">{{ errors.subject }}</p>
+              </transition>
             </div>
 
-            <div class="form-group" :class="{ 'is-focused': focusedField === 'message' || form.message }">
+            <div class="form-group" :class="{ 'is-focused': focusedField === 'message' || form.message, 'has-error': errors.message }">
               <label for="message">Your Message</label>
               <textarea 
                 id="message" 
                 v-model="form.message" 
                 rows="4" 
-                @focus="focusedField = 'message'" 
-                @blur="focusedField = null"
-                required
+                @focus="onFocus('message')" 
+                @blur="onBlur('message')"
               ></textarea>
               <span class="focus-border"></span>
+              <transition name="err-fade">
+                <p v-if="errors.message" class="field-error">{{ errors.message }}</p>
+              </transition>
             </div>
 
             <button type="submit" class="submit-btn" :class="{ 'loading': isSubmitting }" :disabled="isSubmitting">
               <span class="btn-text">{{ isSubmitting ? 'Transmitting...' : 'Send Message' }}</span>
-              <span class="btn-icon">↗</span>
+              <span class="btn-icon">{{ isSubmitting ? '⟳' : '↗' }}</span>
             </button>
 
             <transition name="fade">
@@ -136,6 +130,16 @@ const submitForm = async () => {
                 <div class="success-text">
                   <h4>Message Sent</h4>
                   <p>We've received your transmission and will respond shortly.</p>
+                </div>
+              </div>
+            </transition>
+
+            <transition name="fade">
+              <div v-if="submitStatus === 'error'" class="error-message glass-panel">
+                <div class="error-icon">✕</div>
+                <div class="success-text">
+                  <h4>Transmission Failed</h4>
+                  <p>{{ serverError }}</p>
                 </div>
               </div>
             </transition>
@@ -461,5 +465,86 @@ const submitForm = async () => {
 
 @keyframes spin {
   100% { transform: rotate(360deg); }
+}
+
+/* ── Validation Error States ─────────────────────────────────────────────── */
+
+/* Red underline when field has an error */
+.form-group.has-error .focus-border,
+.form-group.has-error input:focus ~ .focus-border,
+.form-group.has-error textarea:focus ~ .focus-border {
+  width: 100%;
+  background-color: #ef4444;
+}
+
+.form-group.has-error label {
+  color: #ef4444 !important;
+}
+
+.form-group.has-error input,
+.form-group.has-error textarea {
+  border-bottom-color: rgba(239, 68, 68, 0.4);
+}
+
+/* Inline error message */
+.field-error {
+  position: absolute;
+  bottom: -1.4rem;
+  left: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #ef4444;
+  letter-spacing: 0.3px;
+}
+
+/* Extra bottom padding so errors don't overlap next field */
+.form-group {
+  padding-bottom: 1.4rem;
+}
+
+/* Error message slide-in animation */
+.err-fade-enter-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.err-fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+.err-fade-enter-from {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+.err-fade-leave-to {
+  opacity: 0;
+}
+
+/* Error submission banner */
+.error-message {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 12px;
+}
+
+.error-icon {
+  background: #ef4444;
+  color: white;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.error-message .success-text h4 {
+  color: #ef4444;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
 }
 </style>

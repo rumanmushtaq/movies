@@ -33,6 +33,22 @@ const projects = ref([
     role: 'Full Production',
     image: 'https://images.unsplash.com/photo-1470229722913-7c090be5c520?auto=format&fit=crop&w=800&q=80',
     description: 'A visually stunning musical journey crafted for the Grammy-winning artist "Lumina".'
+  },
+  {
+    id: 5,
+    title: 'Crimson Tide',
+    category: 'Commercial',
+    role: 'Direction',
+    image: 'https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?auto=format&fit=crop&w=800&q=80',
+    description: 'A high-octane commercial spot directed for the global launch of Crimson automotive.'
+  },
+  {
+    id: 6,
+    title: 'Whispers in the Dark',
+    category: 'Short Film',
+    role: 'Cinematography',
+    image: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=800&q=80',
+    description: 'A deeply atmospheric psychological thriller praised for its groundbreaking lighting design.'
   }
 ])
 </script>
@@ -41,8 +57,9 @@ const projects = ref([
   <div class="projects-page">
     <div class="container">
       <div class="page-header">
-        <h1 class="title">Studio Projects</h1>
-        <p class="subtitle">A showcase of our cinematic productions, co-productions, and visual effects portfolios.</p>
+        <span class="page-label">Our Work</span>
+        <h1 class="page-title">Studio Projects</h1>
+        <p class="page-subtitle">A showcase of our cinematic productions, co-productions, and visual effects portfolios.</p>
       </div>
 
       <div class="projects-grid">
@@ -83,12 +100,53 @@ const projects = ref([
 .page-header {
   text-align: center;
   margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-label {
+  display: inline-block;
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  margin-bottom: 1.25rem;
+  line-height: 1;
+}
+
+.page-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.7;
+  text-align: center;
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 4rem 3rem;
+}
+
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Premium Card Design */
