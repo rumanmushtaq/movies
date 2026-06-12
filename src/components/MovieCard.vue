@@ -53,14 +53,14 @@ defineProps({
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
   transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
               box-shadow 0.5s ease;
-  background-color: #111; /* fallback while loading */
+  background-color: var(--bg-color-light); /* fallback while loading */
 }
 
 /* Premium Lift & Glow Effect */
 .movie-card:hover .poster-wrapper {
   transform: translateY(-12px) scale(1.02);
   box-shadow: 0 25px 50px rgba(0,0,0,0.8), 
-              0 0 30px rgba(229, 9, 20, 0.15); /* Subtle cinematic red glow */
+              0 0 30px rgba(200, 137, 58, 0.15); /* Subtle cinematic glow */
   z-index: 10;
 }
 
@@ -110,7 +110,7 @@ defineProps({
   transform: scale(0.5) translateY(30px);
   opacity: 0;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 0 25px rgba(229, 9, 20, 0.7);
+  box-shadow: 0 0 25px rgba(200, 137, 58, 0.7);
 }
 
 .movie-card:hover .play-btn {

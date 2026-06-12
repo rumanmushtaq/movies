@@ -188,7 +188,7 @@ const {
 .visual-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(135deg, rgba(5,5,5,0.9) 0%, rgba(229,9,20,0.2) 100%);
+  background: linear-gradient(135deg, rgba(14,12,10,0.9) 0%, rgba(200,137,58,0.2) 100%);
   z-index: 1;
 }
 
@@ -216,11 +216,12 @@ const {
   font-weight: 900;
   line-height: 1.1;
   margin-bottom: 1.5rem;
+  color: var(--primary-color);
 }
 
 .text-accent {
   color: var(--primary-color);
-  text-shadow: 0 0 30px rgba(229,9,20,0.4);
+  text-shadow: 0 0 30px rgba(232,180,74,0.4);
 }
 
 .visual-subtitle {
@@ -298,6 +299,7 @@ const {
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
+  color: var(--primary-color);
 }
 
 .form-desc {
@@ -382,7 +384,7 @@ const {
 
 .submit-btn {
   margin-top: 1rem;
-  background: linear-gradient(135deg, var(--primary-color) 0%, #b9090b 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
   color: white;
   padding: 1.2rem 2rem;
   border-radius: 8px;
@@ -398,7 +400,7 @@ const {
 
 .submit-btn:hover:not(:disabled) {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(229,9,20,0.3);
+  box-shadow: 0 10px 20px rgba(232,180,74,0.3);
 }
 
 .submit-btn:disabled {

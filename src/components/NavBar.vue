@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { Clapperboard } from 'lucide-vue-next'
 
 const isScrolled = ref(false)
 
@@ -20,7 +21,7 @@ onUnmounted(() => {
   <header :class="['navbar', { 'navbar-scrolled': isScrolled }]">
     <div class="container nav-container">
       <router-link to="/" class="logo">
-        <span class="logo-icon">🎬</span>
+        <Clapperboard class="logo-icon" :size="32" :stroke-width="2.5" />
         <span class="logo-text">CINE<span class="text-accent">MAX</span></span>
       </router-link>
 
@@ -70,6 +71,7 @@ onUnmounted(() => {
   font-size: 1.75rem;
   font-weight: 900;
   letter-spacing: -1px;
+  color: var(--primary-color);
 }
 
 .text-accent {

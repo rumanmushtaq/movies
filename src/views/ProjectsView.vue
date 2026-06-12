@@ -121,6 +121,7 @@ const projects = ref([
   letter-spacing: -1.5px;
   margin-bottom: 1.25rem;
   line-height: 1;
+  color: var(--primary-color);
 }
 
 .page-subtitle {
@@ -164,7 +165,7 @@ const projects = ref([
 .premium-card:hover {
   transform: translateY(-15px) scale(1.02);
   box-shadow: 0 30px 60px rgba(0,0,0,0.7), 
-              0 0 40px rgba(229, 9, 20, 0.15); /* Subtle red glow */
+              0 0 40px rgba(232, 180, 74, 0.15); /* Subtle glow */
 }
 
 /* Image Handling */
@@ -241,13 +242,13 @@ const projects = ref([
   font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  background: rgba(229, 9, 20, 0.15);
+  background: rgba(200, 137, 58, 0.15);
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
 }
 
 .role {
-  color: #9ca3af;
+  color: var(--text-muted);
   font-size: 0.85rem;
   font-weight: 500;
 }
@@ -255,7 +256,7 @@ const projects = ref([
 .card-title {
   font-size: 2rem;
   font-weight: 900;
-  color: white;
+  color: var(--primary-color);
   margin-bottom: 0;
   letter-spacing: -0.5px;
   text-shadow: 0 2px 10px rgba(0,0,0,0.5);
@@ -284,7 +285,7 @@ const projects = ref([
 }
 
 .card-desc {
-  color: #d1d5db;
+  color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
@@ -333,7 +334,7 @@ const projects = ref([
 
 .play-btn:hover .play-icon {
   transform: scale(1.1);
-  background-color: #b9090b;
+  background-color: var(--primary-hover);
 }
 
 .play-text {

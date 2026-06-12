@@ -36,7 +36,7 @@
 
 <style scoped>
 .footer {
-  background-color: #000;
+  background-color: var(--bg-color);
   border-top: 1px solid var(--border-color);
   padding: 80px 0 30px;
   margin-top: auto;
@@ -56,6 +56,7 @@
   font-size: 1.75rem;
   font-weight: 900;
   margin-bottom: 1rem;
+  color: var(--primary-color);
 }
 
 .text-accent {

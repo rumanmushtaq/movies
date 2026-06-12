@@ -174,12 +174,13 @@ const goBack = () => {
   font-weight: 900;
   line-height: 1.1;
   margin-bottom: 1.5rem;
+  color: var(--primary-color);
 }
 
 .description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #d1d5db;
+  color: var(--text-muted);
   margin-bottom: 2rem;
   max-width: 800px;
 }

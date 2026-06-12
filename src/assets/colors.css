@@ -1,0 +1,21 @@
+/* Theme Colors */
+:root {
+  --color-dominant: #C8893A; /* Meroë Sand: Logo, key headings, hero accents, CTA buttons */
+  --color-background: #0E0C0A; /* Obsidian: Primary page background */
+  --color-secondary: #8B1A1A; /* Nile Crimson: Section dividers, hover states, urgency */
+  --color-neutral-mid: #3A2E22; /* Khartoum Dust: Cards, surfaces, secondary containers */
+  --color-light: #F0E8D8; /* Papyrus: Body text on dark */
+  --color-accent: #E8B44A; /* Electric Sahel: Highlights, star ratings, glows */
+  
+  /* Semantic Mappings */
+  --bg-color: var(--color-background); /* Obsidian: Primary page background */
+  --bg-color-light: var(--color-neutral-mid); /* Khartoum Dust: Cards, surfaces, secondary containers */
+  --text-color: var(--color-light); /* Papyrus: Body text on dark */
+  --text-muted: rgba(240, 232, 216, 0.7); /* Papyrus with opacity */
+  --primary-color: var(--color-dominant); /* Meroë Sand: Logo, key headings, hero accents, CTA buttons */
+  --primary-hover: var(--color-accent); /* Electric Sahel: Hover states */
+  --card-bg: var(--color-neutral-mid); /* Khartoum Dust: Cards, surfaces */
+  --border-color: rgba(240, 232, 216, 0.08); /* Subtle Papyrus: Section dividers */
+  --accent-glow: rgba(232, 180, 74, 0.4); /* Electric Sahel for glows (used sparingly) */
+  --secondary-glow: rgba(139, 26, 26, 0.15); /* Nile Crimson for hover glows */
+}

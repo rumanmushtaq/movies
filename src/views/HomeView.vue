@@ -15,7 +15,8 @@ const heroSlides = [
     type: 'video', 
     title: 'TEARS OF STEEL',
     subtitle: 'A group of warriors and scientists try to save the world from destructive robots in this stunning sci-fi epic.',
-    videoSrc: 'https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4',
+    videoSrc: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    poster: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1920&q=80',
     badge: 'Exclusive Premiere',
     rating: '9.2',
     year: '2024',
@@ -177,7 +178,8 @@ const dramaMovies = ref([
             <template v-if="slide.type === 'video'">
               <video 
                 ref="videoPlayer"
-                :src="slide.videoSrc" 
+                :src="slide.videoSrc"
+                :poster="slide.poster" 
                 class="hero-media video-media" 
                 autoplay 
                 muted 
@@ -347,7 +349,7 @@ const dramaMovies = ref([
   width: 100%; height: 100%;
   z-index: 1;
   overflow: hidden;
-  background-color: #111;
+  background-color: var(--bg-color-light);
   /* Hardware acceleration for smooth parallax */
   will-change: transform; 
 }
@@ -408,7 +410,7 @@ const dramaMovies = ref([
 }
 
 .rating {
-  color: #fbbf24;
+  color: var(--color-accent);
 }
 
 /* Premium Reveal Masks (like the-cast.co.uk) */
@@ -423,6 +425,7 @@ const dramaMovies = ref([
   line-height: 1;
   margin-bottom: 1rem;
   letter-spacing: -2px;
+  color: var(--primary-color);
   text-shadow: 0 4px 20px rgba(0,0,0,0.8);
   text-transform: uppercase;
   padding-bottom: 10px; /* prevent font clipping */
@@ -430,7 +433,7 @@ const dramaMovies = ref([
 
 .hero-subtitle {
   font-size: 1.2rem;
-  color: #e5e7eb;
+  color: var(--text-color);
   line-height: 1.6;
   margin-bottom: 2.5rem;
   text-shadow: 0 2px 10px rgba(0,0,0,0.8);
@@ -454,7 +457,7 @@ const dramaMovies = ref([
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(229, 9, 20, 0.4);
+  box-shadow: 0 10px 20px rgba(232, 180, 74, 0.4);
 }
 
 .slider-pagination {
@@ -565,6 +568,7 @@ const dramaMovies = ref([
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  color: var(--primary-color);
   padding-bottom: 5px; /* Prevent clipping */
 }
 
@@ -623,7 +627,7 @@ const dramaMovies = ref([
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #fff;
+  color: var(--text-color);
   font-size: 1.2rem;
   display: flex;
   align-items: center;
@@ -639,7 +643,7 @@ const dramaMovies = ref([
   background: var(--primary-color);
   border-color: var(--primary-color);
   transform: scale(1.15);
-  box-shadow: 0 0 20px rgba(229, 9, 20, 0.4);
+  box-shadow: 0 0 20px rgba(232, 180, 74, 0.4);
 }
 
 .arrow-btn:active {

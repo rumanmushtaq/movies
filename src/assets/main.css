@@ -1,15 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import './colors.css';
 
 :root {
-  /* Cinematic Dark Theme */
-  --bg-color: #050505;
-  --bg-color-light: #111111;
-  --text-color: #ffffff;
-  --text-muted: #9ca3af;
-  --primary-color: #e50914; /* Cinematic Red */
-  --primary-hover: #b9090b;
-  --card-bg: rgba(20, 20, 20, 0.6);
-  --border-color: rgba(255, 255, 255, 0.08);
+  /* Cinematic Dark Theme - Variables moved to colors.css */
   --glass-border: 1px solid rgba(255, 255, 255, 0.05);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
